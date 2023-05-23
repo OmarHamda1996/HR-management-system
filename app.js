@@ -71,3 +71,41 @@ document.getElementById("employee-form").addEventListener("submit", function(eve
 
   document.getElementById("employee-form").reset();
 });
+
+function saveEmployeesToLocalStorage() {
+  localStorage.setItem('employees', JSON.stringify(employees));
+}
+
+
+
+function loadEmployeesFromLocalStorage() {
+  const storedEmployees = localStorage.getItem('employees');
+  if (storedEmployees) {
+    employees = JSON.parse(storedEmployees);
+  }
+}
+
+window.addEventListener('load', function() {
+  loadEmployeesFromLocalStorage();
+  employees.forEach(function(employee) {
+    employee.render();
+  });
+});
+
+
+document.getElementById('employee-form').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  const fullName = document.getElementById('full-name').value;
+  const department = document.getElementById('department').value;
+  const level = document.getElementById('level').value;
+  const imageUrl = document.getElementById('image-url').value;
+
+  const newEmployee = new Employee(generateEmployeeId(), fullName, department, level, imageUrl);
+  employees.push(newEmployee);
+  newEmployee.render();
+
+  saveEmployeesToLocalStorage();
+
+  document.getElementById('employee-form').reset();
+});
