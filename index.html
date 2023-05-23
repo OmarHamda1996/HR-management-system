@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Employee Information</title>
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
     <header>
@@ -12,7 +13,32 @@
         </ul>
       </nav>
     </header>
-    <main id="employee-list"></main>
+    <main id="employee-list">
+      <form id="employee-form">
+        <label for="full-name">Full Name:</label>
+        <input type="text" id="full-name" required>
+        
+        <label for="department">Department:</label>
+        <select id="department" required>
+          <option value="Administration">Administration</option>
+          <option value="Marketing">Marketing</option>
+          <option value="Development">Development</option>
+          <option value="Finance">Finance</option>
+        </select>
+        
+        <label for="level">Level:</label>
+        <select id="level" required>
+          <option value="Junior">Junior</option>
+          <option value="Mid-Senior">Mid-Senior</option>
+          <option value="Senior">Senior</option>
+        </select>
+        
+        <label for="image-url">Image URL:</label>
+        <input type="text" id="image-url" required>
+        
+        <button type="submit">Submit</button>
+      </form>
+    </main>
     <footer>
       <p>&copy; 2023 Hamada's All rights reserved.</p>
       <ul>
